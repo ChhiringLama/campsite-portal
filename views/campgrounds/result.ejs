@@ -1,0 +1,68 @@
+<% layout('layout/boilerplate')%>
+    <div class="d-flex justify-content-between align-items-center">
+        <h5 class="font-third">Welcome to Campsite Portal</h5>
+        <nav class="navbar navbar-light ">
+            <form action="/campgrounds" method="GET" class="form-inline">
+                <div>
+                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Type here" required>
+                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search" class="" >
+                </div>
+            </form>
+        </nav>
+    </div>
+
+    <div class="mt-5 mb-5">
+        <div class="section-header">
+            <h2>Result</h2>
+         
+        </div>
+        <%if(campgrounds.length==0){%>
+            <div class="alert alert-info" role="alert">
+                No result found
+              </div>
+        <%}%> 
+        <div class="row section-one">
+            <% for(let campground of campgrounds){%>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <div class="card-type-a">
+                        <div class="img-box">
+                            <img src="<%=campground.images[0].url%>" alt="#">
+                        </div>
+                        <div class="card-contents">
+
+                            <div class="details-box">
+                                <h5>
+                                    <%=campground.title%>
+                                </h5>
+                                <ul>
+                                    <li><img src="/img/region-blue.png" alt="#"><span>
+                                            <%=campground.location%>
+                                        </span>
+                                    </li>
+                                    <li><img src="/img/difficulty.png" alt="#"><span>
+                                            <%=campground.difficulty%>
+                                        </span></li>
+                                </ul>
+                            </div>
+                            <div class="lower-box">
+                                <a class="user-btn btn-small btn btn-success"
+                                    href="campgrounds/<%=campground._id%>">Explore</a>
+                                <div class="price-box">
+                                    <span>Expected Cost</span>
+                                    <h6>Rs <%=campground.price%>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+        <div class="mb-5 mt-3">
+            <a href="/campgrounds" class="btn btn-warning" style="margin: auto;
+            display: block;
+            width: 17%;">Go back</a>
+         </div>
+     
+
+    </div>

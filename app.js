@@ -23,7 +23,7 @@ const reviewsRoutes=require('./routes/reviews');
 
 /**Settings and Config Starts */
 // Establish connection
-mongoose.connect("mongodb://127.0.0.1:27017/campgroundDB", {});
+mongoose.connect(process.env.MONGO_URL, {})
 
 //Instance of the connection that gives us more controll on the connection with methods like on and once
 //to handle error

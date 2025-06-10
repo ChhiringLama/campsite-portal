@@ -1,0 +1,50 @@
+<% layout('layout/boilerplate')%>
+
+
+<div class="row  mt-5">
+    <div class="col-9 offset-2">
+        <h1 class="mb-4 font-third">Register</h1>
+        <form action="/register" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username"  required>
+                <div class="valid-feedback">
+                    Valid !
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password"  required>
+                <div class="valid-feedback">
+                    Valid !
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email"  required>
+                <div class="valid-feedback">
+                    Valid !
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Admin Code</label>
+                <input type="text" class="form-control" name="admincode" id="admincode" placeholder="Enter Admin Code If you are signing up as admin">
+                <div class="valid-feedback">
+                    Valid !
+                </div>
+            </div>    
+            <div class="mb-3">
+                <button class="btn btn-success">
+                    Submit
+                </button>
+            </div>
+          
+        </form>
+    </div>
+</div>
+
+<div class="mb-5 mt-3">
+    <a href="/campgrounds" class="btn btn-danger" style="margin: auto;
+    display: block;
+    width: 17%;">Cancel</a>
+ </div>

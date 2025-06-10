@@ -1,0 +1,74 @@
+<% layout('layout/boilerplate')%>
+    <div class="admin-page mt-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="font-third">Hello <%if(currentUser && currentUser.username){%><%=currentUser.username%><%}%></h5>
+            <nav class="navbar navbar-light ">
+                <form action="/admin" method="GET" class="form-inline">
+                    <div>
+                        <input class="form-control mr-sm-2" type="text" name="search" placeholder="Type here" required>
+                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search" class="" >
+                    </div>
+                </form>
+            </nav>
+        </div>
+     
+        <div class="section-header">
+            <h2>Results</h2>
+        </div>
+        <div class="row">
+            <%if(campgrounds.length==0){%>
+                <div class="alert alert-info" role="alert">
+                    No result found
+                  </div>
+            <%}%> 
+
+            <% for(let campground of campgrounds){%>
+                <div class="col-md-3">
+                    <div class="card mb-4">
+                        <%if(campground.images.length>0){%>
+                            <img src="<%=campground.images[0].url%>" class="card-img-top" alt="campsite-image"
+                                style="height: 200px;">
+                            <%}%>
+                                <div class="card-body">
+                                    <h5 class="card-title mb-0">
+                                        <%=campground.title%>
+                                    </h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+
+                                    <li class="list-group-item">
+                                        <%if(campground.author){%>
+                                            <%=campground.author.username%>
+                                                <%}else{%>[USER DELETED]<%}%>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <%=campground.location%>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <% if(campground.postedAt){%> <%=campground.postedAt.toLocaleDateString("en-US")%><%}else{%>Date not found<%}%>
+                                    </li>
+
+                                </ul>
+                                <div class="card-body btn-links">
+                                    <a href="/campgrounds/<%=campground._id%>"
+                                        class="card-link btn btn-success">View</a>
+                                        <%if(campground.approved === false){%>
+                                        <form action="/admin/<%=campground._id%>?_method=PUT" method="POST" class="d-inline">
+                                            <button class="card-link btn btn-info" style="color: white;">Approve</button>
+                                        </form>
+                                        <%}else{%>
+                                            <form action="/admin/<%=campground._id%>?_method=PUT" method="POST" class="d-inline">
+                                                <button class="card-link btn btn-warning">Disapprove</button>
+                                            </form><%}%>
+                                        <a href="/admin/<%=campground._id%>" class="card-link btn btn-danger">Delete</a>
+                                </div>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+        <div class="mb-5 mt-3">
+            <a href="/admin" class="btn btn-warning" style="margin: auto;
+            display: block;
+            width: 17%;">Go back</a>
+         </div>
+    </div>

@@ -31,7 +31,7 @@ const index = async (req, res) => {
 
     const mostReviewed = sortedCampgrounds.slice(0, 8);
     const recentCampgrounds = [...campgrounds].reverse().slice(0, 9);
-
+    console.log(slicedCampgrounds);
     res.render("campgrounds/index", {
       campgrounds: slicedCampgrounds,
       mostReviewed,

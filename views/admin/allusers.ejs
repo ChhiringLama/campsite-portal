@@ -1,0 +1,27 @@
+<% layout('layout/boilerplate')%>
+    <div class="admin-page mt-3 mb-3">
+        <h4 class="font-third">Hello <%=currentUser.username%>
+        </h4>
+        
+        <div class="section-header">
+            <h2>Manage Users</h2>
+        </div>
+        <div class="ul-container mb-5">
+         
+                       
+            <% for(let user of users){%>
+             
+                <ul class="list-group list-group-horizontal mb-4">
+                    <li class="list-group-item" style="text-transform: capitalize;"><%=user.username%></li>     
+                    <li class="list-group-item" style="text-transform: capitalize;"><%=user.email%></li>     
+                    <li class="list-group-item" style="text-transform: capitalize;"><%if(user.admin){%> <div class="btn btn-info">Admin</div> <%}else{%>Normal<%}%></li>     
+                    <li class="list-group-item" style="text-transform: capitalize;">
+                       
+                        <%if(!user.admin || user._id.toString() === currentUser._id.toString()){%>
+                            <a class="card-link btn btn-danger" href="userdetail/<%=user._id%>">Delete</a> <%}else{%> Cant Delete <%}%>
+                        
+                    </li>     
+                  </ul>
+                <%}%>
+        </div>
+    </div>

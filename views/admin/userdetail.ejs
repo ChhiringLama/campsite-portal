@@ -1,0 +1,29 @@
+<% layout('layout/boilerplate')%>
+    <div class="admin-page mt-3 mb-3">
+        <h4 class="font-third">Hello <%=currentUser.username%>
+        </h4>
+        <div class="section-header">
+            <h2>Delete Confirmation</h2>
+         
+        </div>  
+        <%=user.usernam%>
+      
+            <div class="card text-center">
+                <div class="card-header">
+                <h5><%=user.username%></h5>
+                </div>
+                <div class="card-body">
+                  <h5 class="text-muted">Sure you wanna delete?</h5>
+                <form action="/admin/users/<%=user._id%>?_method=DELETE" method="post" class="d-inline">
+                                <button class="card-link btn btn-danger">Delete</button>
+                </form>
+                </div>
+              </div>
+            
+              <div class="mb-5 mt-3">
+                <a href="/admin/users" class="btn btn-warning" style="margin: auto;
+                display: block;
+                width: 17%;"> ⤶ Go back</a>
+             </div>
+             
+    </div>

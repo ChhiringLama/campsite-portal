@@ -1,0 +1,45 @@
+<% layout('layout/boilerplate')%>
+
+
+<div class="row  mt-5">
+    <div class="col-9 offset-2">
+        <h1 class="mb-4 font-third">Login</h1>
+        <form action="/login" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username"  required>
+                <div class="valid-feedback">
+                    Looks Good !
+                </div>
+                <div class="invalid-feedback">
+                    Username is Empty!.
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password"  required>
+                <div class="valid-feedback">
+                    Looks Good !
+                </div>
+                <div class="invalid-feedback">
+                    Password is Empty!.
+                  </div>
+            </div>          
+            <div class="mb-3">
+                <button class="btn btn-success">
+                    Login
+                </button>
+                <br>
+                <h6 class="mt-4 text-muted">Dont have an account?</h6>
+                <a href="/register" class="btn btn-info">Sign Up</a>
+            </div>
+          
+        </form>
+    </div>
+</div>
+
+<div class="mb-5 mt-3">
+    <a href="/campgrounds" class="btn btn-warning" style="margin: auto;
+    display: block;
+    width: 17%;">Home</a>
+ </div>
